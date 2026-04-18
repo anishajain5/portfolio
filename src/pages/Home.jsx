@@ -1,6 +1,19 @@
+import { useState } from 'react'
+import PersonaOverlay from '../components/PersonaOverlay'
+
+const STORAGE_KEY = 'portfolio_persona_seen'
+
 export default function Home() {
+  const [showOverlay, setShowOverlay] = useState(
+    !localStorage.getItem(STORAGE_KEY)
+  )
+
   return (
     <div>
+      {showOverlay && (
+        <PersonaOverlay onSkip={() => setShowOverlay(false)} />
+      )}
+
       {/* Hero section -- display typography showcase */}
       <section className="py-16 border-b border-gray-200">
         <p
