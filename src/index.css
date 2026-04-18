@@ -1,5 +1,40 @@
 @import "tailwindcss";
 
+@theme {
+  /* Primary color scale -- anchored at #059669 as primary-600 */
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+
+  /* Neutral scale for text and backgrounds */
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #525252;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+
+  /* Font families */
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  /* Typography scale */
+  --text-display-2xl: 5rem;
+  --text-display-xl: 4rem;
+  --text-display-lg: 3rem;
+}
+
+/* Base styles */
 body {
   margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
