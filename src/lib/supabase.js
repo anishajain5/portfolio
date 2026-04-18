@@ -4,3 +4,23 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+export async function fetchCaseStudies() {
+  const { data, error } = await supabase
+    .from('case_studies')
+    .select('*')
+    .order('order_index')
+
+  if (error) throw error
+  return data
+}
+
+export async function fetchPlanTemplate() {
+  const { data, error } = await supabase
+    .from('plan_template')
+    .select('*')
+    .order('order_index')
+
+  if (error) throw error
+  return data
+}

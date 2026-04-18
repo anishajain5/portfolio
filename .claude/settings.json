@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(supabase --version)",
+      "Bash(node scripts/test-fetch.mjs)",
+      "Bash(git commit -m ':*)"
+    ]
+  }
+}
