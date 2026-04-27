@@ -1,3 +1,5 @@
+import ContactForm from './ContactForm'
+
 export default function ContactSection({ email, linkedinUrl }) {
   return (
     <section className="border-t border-gray-200 pt-12 mt-12">
@@ -16,18 +18,22 @@ export default function ContactSection({ email, linkedinUrl }) {
       <p className="text-gray-500 mb-8 max-w-md leading-relaxed">
         [Contact subtext placeholder -- one sentence about the best way to reach you.]
       </p>
-      <div className="flex flex-wrap gap-4">
+
+      <ContactForm />
+
+      <div className="flex flex-wrap gap-4 mt-8 pt-8 border-t border-gray-100">
         <a
           href={`mailto:${email}`}
-          className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-3 rounded transition-colors text-sm"
+          className="text-sm text-gray-500 hover:text-primary-600 transition-colors"
         >
-          Email me
+          {email}
         </a>
+        <span className="text-gray-200">|</span>
         <a
           href={linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="border border-gray-300 hover:border-primary-600 hover:text-primary-600 text-gray-700 font-medium px-6 py-3 rounded transition-colors text-sm"
+          className="text-sm text-gray-500 hover:text-primary-600 transition-colors"
         >
           LinkedIn
         </a>
