@@ -15,6 +15,17 @@ export async function fetchCaseStudies() {
   return data
 }
 
+export async function fetchCaseStudy(id) {
+  const { data, error } = await supabase
+    .from('case_studies')
+    .select('*')
+    .eq('id', id)
+    .single()
+
+  if (error) throw error
+  return data
+}
+
 export async function fetchPlanTemplate() {
   const { data, error } = await supabase
     .from('plan_template')

@@ -65,7 +65,7 @@ export default function Home() {
         >
           [Highlight reel heading placeholder]
         </h2>
-        <CaseStudyGrid ctaTo="/for/recruiter" ctaLabel="See full breakdown" />
+        <CaseStudyGrid />
       </section>
     </div>
   )

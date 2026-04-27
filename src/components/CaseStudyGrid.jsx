@@ -16,7 +16,7 @@ function SkeletonCard() {
   )
 }
 
-export default function CaseStudyGrid({ ctaTo, ctaLabel }) {
+export default function CaseStudyGrid() {
   const [caseStudies, setCaseStudies] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -41,11 +41,10 @@ export default function CaseStudyGrid({ ctaTo, ctaLabel }) {
         : caseStudies.map(cs => (
             <CaseStudyCard
               key={cs.id}
+              id={cs.id}
               company={cs.company}
               role={cs.role}
               summary={cs.summary}
-              ctaTo={ctaTo}
-              ctaLabel={ctaLabel}
             />
           ))
       }
