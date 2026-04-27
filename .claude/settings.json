@@ -6,7 +6,9 @@
       "Bash(git commit -m ':*)",
       "Bash(node scripts/seed-case-studies.mjs)",
       "Bash(node scripts/delete-placeholders.mjs)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(node scripts/seed-plan-template.mjs)",
+      "Bash(node -e ' *)"
     ]
   }
 }
