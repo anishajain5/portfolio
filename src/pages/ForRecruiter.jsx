@@ -76,7 +76,7 @@ export default function ForRecruiter() {
           For Recruiters
         </p>
         <h1
-          className="text-4xl md:text-6xl font-bold leading-none tracking-tight text-ink mb-6"
+          className="text-3xl md:text-6xl font-bold leading-tight tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           I build products by building alignment first. Because the best roadmap means nothing if the room isn't behind it.
@@ -88,7 +88,7 @@ export default function ForRecruiter() {
 
       {/* Quick facts */}
       <section className="py-10 border-b border-gray-200">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <p
               className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-3"

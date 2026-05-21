@@ -35,7 +35,7 @@ export default function ForHiringManager() {
           For Hiring Managers
         </p>
         <h1
-          className="text-4xl md:text-6xl font-bold leading-none tracking-tight text-ink mb-6"
+          className="text-3xl md:text-6xl font-bold leading-tight tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           I build products by building alignment first. Because the best roadmap means nothing if the room isn't behind it.

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const navLinks = [
@@ -10,6 +11,7 @@ const navLinks = [
 
 export default function Layout({ children }) {
   const { pathname } = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -17,12 +19,14 @@ export default function Layout({ children }) {
         <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
             to="/"
-            className="text-xl font-bold text-ink hover:text-primary-600 transition-colors"
+            className="text-xl font-bold text-ink hover:text-primary-600 transition-colors shrink-0"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Anisha's Portfolio
           </Link>
-          <ul className="flex items-center gap-8 list-none m-0 p-0">
+
+          {/* Desktop nav */}
+          <ul className="hidden md:flex items-center gap-8 list-none m-0 p-0">
             {navLinks.map(({ to, label }) => {
               const isActive = pathname === to
               return (
@@ -42,15 +46,52 @@ export default function Layout({ children }) {
               )
             })}
           </ul>
+
+          {/* Hamburger button */}
+          <button
+            className="md:hidden flex flex-col justify-center gap-1.5 p-2 -mr-2"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span className={`block w-5 h-0.5 bg-ink transition-all duration-200 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block w-5 h-0.5 bg-ink transition-all duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-0.5 bg-ink transition-all duration-200 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          </button>
         </nav>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="md:hidden border-t border-gray-100 bg-white">
+            <ul className="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1 list-none m-0 p-0 py-4 px-6">
+              {navLinks.map(({ to, label }) => {
+                const isActive = pathname === to
+                return (
+                  <li key={to}>
+                    <Link
+                      to={to}
+                      onClick={() => setMenuOpen(false)}
+                      className={[
+                        'block py-3 text-sm font-medium transition-colors no-underline border-b border-gray-50',
+                        isActive ? 'text-primary-600' : 'text-gray-600 hover:text-ink',
+                      ].join(' ')}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )}
       </header>
 
-      <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-12">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 md:px-6 py-8 md:py-12">
         {children}
       </main>
 
       <footer className="border-t border-gray-200 mt-auto">
-        <div className="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-gray-500">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-sm text-gray-500">
           <span style={{ fontFamily: 'var(--font-display)' }} className="font-semibold text-ink">
             Anisha Jain, 2026
           </span>

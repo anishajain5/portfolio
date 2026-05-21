@@ -44,7 +44,7 @@ export default function Home() {
           Product Manager
         </p>
         <h1
-          className="text-5xl md:text-7xl font-bold leading-none tracking-tight text-ink mb-6"
+          className="text-4xl md:text-7xl font-bold leading-tight tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           I build products by building alignment first.
@@ -101,83 +101,32 @@ export default function Home() {
           </button>
           <div ref={videoScrollRef} className="flex flex-1 gap-4 overflow-x-auto scrollbar-hide pb-4">
 
-          {/* Video 1 */}
-          <div className="w-52 md:w-[380px] shrink-0">
-            <div className="rounded-lg overflow-hidden border border-gray-200 w-full aspect-9/16">
-              <iframe
-                src="https://www.youtube.com/embed/vtfnwN8w-KU"
-                title="My 90 Day Plan Framework"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <p
-              className="mt-3 text-sm font-medium text-ink"
-              style={{ fontFamily: 'var(--font-sans)' }}
-            >
-              My 90 Day Plan Framework
-            </p>
-          </div>
-
-          {/* Video 2 */}
-          <div className="w-52 md:w-[380px] shrink-0">
-            <div className="rounded-lg overflow-hidden border border-gray-200 w-full aspect-9/16">
-              <iframe
-                src="https://www.youtube.com/embed/G9Bd1UQWZuU"
-                title="A Real PM Tradeoff"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <p
-              className="mt-3 text-sm font-medium text-ink"
-              style={{ fontFamily: 'var(--font-sans)' }}
-            >
-              A Real PM Tradeoff
-            </p>
-          </div>
-
-          {/* Placeholder 3 */}
-          <div className="w-52 md:w-[380px] shrink-0">
-            <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 w-full aspect-9/16 flex flex-col items-center justify-center gap-2">
+          {[
+            { src: 'https://www.youtube.com/embed/WNzOsEB9d6A', title: 'Reason behind making this portfolio' },
+            { src: 'https://www.youtube.com/embed/1qmIZZ_pXTI', title: 'What I Am Up To' },
+            { src: 'https://www.youtube.com/embed/vtfnwN8w-KU', title: 'My 90 Day Plan Framework' },
+            { src: 'https://www.youtube.com/embed/G9Bd1UQWZuU', title: 'A Real PM Tradeoff' },
+          ].map(video => (
+            <div key={video.src} className="w-44 sm:w-52 md:w-[380px] shrink-0">
+              <div className="rounded-lg overflow-hidden border border-gray-200 w-full aspect-9/16">
+                <iframe
+                  src={video.src}
+                  title={video.title}
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
               <p
-                className="text-xs font-medium tracking-widest uppercase text-gray-400"
+                className="mt-3 text-sm font-medium text-ink"
                 style={{ fontFamily: 'var(--font-sans)' }}
               >
-                Coming soon
+                {video.title}
               </p>
             </div>
-            <p
-              className="mt-3 text-sm font-medium text-gray-400"
-              style={{ fontFamily: 'var(--font-sans)' }}
-            >
-              Video 3 coming soon
-            </p>
-          </div>
-
-          {/* Placeholder 4 */}
-          <div className="w-52 md:w-[380px] shrink-0">
-            <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 w-full aspect-9/16 flex flex-col items-center justify-center gap-2">
-              <p
-                className="text-xs font-medium tracking-widest uppercase text-gray-400"
-                style={{ fontFamily: 'var(--font-sans)' }}
-              >
-                Coming soon
-              </p>
-            </div>
-            <p
-              className="mt-3 text-sm font-medium text-gray-400"
-              style={{ fontFamily: 'var(--font-sans)' }}
-            >
-              Video 4 coming soon
-            </p>
-          </div>
+          ))}
 
           </div>
           <button
@@ -224,7 +173,7 @@ export default function Home() {
           </button>
           <div ref={workScrollRef} className="flex flex-1 gap-4 overflow-x-auto scrollbar-hide pb-4">
             {featuredStudies.map(cs => (
-              <div key={cs.id} className="w-64 md:w-80 shrink-0 border border-gray-200 rounded-lg p-6 flex flex-col hover:border-primary-600 transition-colors">
+              <div key={cs.id} className="w-64 md:w-80 shrink-0 border border-gray-200 rounded-lg p-5 md:p-6 flex flex-col hover:border-primary-600 transition-colors">
                 <p
                   className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-2"
                   style={{ fontFamily: 'var(--font-sans)' }}

@@ -27,7 +27,7 @@ export default function ForPM() {
           For PM Peers
         </p>
         <h1
-          className="text-4xl md:text-6xl font-bold leading-none tracking-tight text-ink mb-6"
+          className="text-3xl md:text-6xl font-bold leading-tight tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           I came here to build things that matter.
