@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import PersonaOverlay from '../components/PersonaOverlay'
 import PersonaCards from '../components/PersonaCards'
 import CaseStudyGrid from '../components/CaseStudyGrid'
@@ -9,6 +9,15 @@ export default function Home() {
   const [showOverlay, setShowOverlay] = useState(
     !localStorage.getItem(STORAGE_KEY)
   )
+  const videoScrollRef = useRef(null)
+
+  function scrollVideos(direction) {
+    if (!videoScrollRef.current) return
+    videoScrollRef.current.scrollBy({
+      left: direction === 'right' ? 400 : -400,
+      behavior: 'smooth',
+    })
+  }
 
   return (
     <div>
@@ -48,19 +57,43 @@ export default function Home() {
 
       {/* Videos */}
       <section className="py-12 border-b border-gray-200">
-        <p
-          className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-3"
-          style={{ fontFamily: 'var(--font-sans)' }}
-        >
-          Watch
-        </p>
-        <h2
-          className="text-2xl md:text-3xl font-bold text-ink mb-8"
-          style={{ fontFamily: 'var(--font-display)' }}
-        >
-          [Video section heading placeholder]
-        </h2>
-        <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p
+              className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-3"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              Watch
+            </p>
+            <h2
+              className="text-2xl md:text-3xl font-bold text-ink"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              [Video section heading placeholder]
+            </h2>
+          </div>
+          <div className="flex items-center gap-2 shrink-0 ml-4">
+            <button
+              onClick={() => scrollVideos('left')}
+              aria-label="Scroll left"
+              className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary-600 hover:text-primary-600 transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              onClick={() => scrollVideos('right')}
+              aria-label="Scroll right"
+              className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary-600 hover:text-primary-600 transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div ref={videoScrollRef} className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6">
 
           {/* Video 1 */}
           <div className="w-52 md:w-[380px] shrink-0">
