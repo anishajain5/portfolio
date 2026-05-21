@@ -60,10 +60,10 @@ export default function Home() {
         >
           [Video section heading placeholder]
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6">
 
           {/* Video 1 */}
-          <div>
+          <div className="w-52 md:w-[380px] shrink-0">
             <div className="rounded-lg overflow-hidden border border-gray-200 w-full aspect-9/16">
               <iframe
                 src="https://www.youtube.com/embed/vtfnwN8w-KU"
@@ -84,7 +84,7 @@ export default function Home() {
           </div>
 
           {/* Video 2 */}
-          <div>
+          <div className="w-52 md:w-[380px] shrink-0">
             <div className="rounded-lg overflow-hidden border border-gray-200 w-full aspect-9/16">
               <iframe
                 src="https://www.youtube.com/embed/G9Bd1UQWZuU"
@@ -105,7 +105,7 @@ export default function Home() {
           </div>
 
           {/* Placeholder 3 */}
-          <div>
+          <div className="w-52 md:w-[380px] shrink-0">
             <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 w-full aspect-9/16 flex flex-col items-center justify-center gap-2">
               <p
                 className="text-xs font-medium tracking-widest uppercase text-gray-400"
@@ -123,7 +123,7 @@ export default function Home() {
           </div>
 
           {/* Placeholder 4 */}
-          <div>
+          <div className="w-52 md:w-[380px] shrink-0">
             <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 w-full aspect-9/16 flex flex-col items-center justify-center gap-2">
               <p
                 className="text-xs font-medium tracking-widest uppercase text-gray-400"
