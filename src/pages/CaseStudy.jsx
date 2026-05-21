@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
-import { fetchCaseStudy } from '../lib/supabase'
+import { findCaseStudy } from '../data/caseStudies'
 
 function parseApproach(text) {
   if (!text) return []
@@ -43,31 +42,6 @@ function Section({ label, children }) {
   )
 }
 
-function SkeletonDetail() {
-  return (
-    <div className="animate-pulse">
-      <div className="h-3 bg-gray-100 rounded w-32 mb-8" />
-      <div className="h-3 bg-gray-100 rounded w-40 mb-4" />
-      <div className="h-10 bg-gray-100 rounded w-3/4 mb-3" />
-      <div className="h-10 bg-gray-100 rounded w-1/2 mb-8" />
-      <div className="space-y-3 mb-10">
-        <div className="h-3 bg-gray-100 rounded w-full" />
-        <div className="h-3 bg-gray-100 rounded w-5/6" />
-        <div className="h-3 bg-gray-100 rounded w-4/6" />
-      </div>
-      {[1, 2, 3, 4].map(i => (
-        <div key={i} className="py-8 border-b border-gray-100">
-          <div className="h-3 bg-gray-100 rounded w-20 mb-4" />
-          <div className="space-y-2">
-            <div className="h-3 bg-gray-100 rounded w-full" />
-            <div className="h-3 bg-gray-100 rounded w-5/6" />
-            <div className="h-3 bg-gray-100 rounded w-3/4" />
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
 
 export default function CaseStudy() {
   const { id } = useParams()
@@ -75,26 +49,9 @@ export default function CaseStudy() {
   const navigate = useNavigate()
   const backTo = state?.from ?? '/'
 
-  const [cs, setCs] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const cs = findCaseStudy(id)
 
-  useEffect(() => {
-    fetchCaseStudy(id)
-      .then(data => setCs(data))
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false))
-  }, [id])
-
-  if (loading) {
-    return (
-      <div className="max-w-2xl py-10">
-        <SkeletonDetail />
-      </div>
-    )
-  }
-
-  if (error || !cs) {
+  if (!cs) {
     return (
       <div className="py-20 text-center">
         <p className="text-gray-400 mb-4">Case study not found.</p>

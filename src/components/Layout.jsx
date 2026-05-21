@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 const navLinks = [
   { to: '/', label: 'Home' },
+  { to: '/case-studies', label: 'Case Studies' },
   { to: '/for/recruiter', label: 'For Recruiters' },
   { to: '/for/hiring-manager', label: 'For Hiring Managers' },
   { to: '/for/pm', label: 'For PMs' },
@@ -51,7 +52,7 @@ export default function Layout({ children }) {
       <footer className="border-t border-gray-200 mt-auto">
         <div className="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-gray-500">
           <span style={{ fontFamily: 'var(--font-display)' }} className="font-semibold text-ink">
-            Anisha Jain, 2025
+            Anisha Jain, 2026
           </span>
           <div className="flex items-center gap-6">
             <a

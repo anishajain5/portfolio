@@ -13,10 +13,10 @@ export default function ContactSection({ email, linkedinUrl }) {
         className="text-3xl font-bold text-ink mb-3 leading-tight"
         style={{ fontFamily: 'var(--font-display)' }}
       >
-        [Contact heading placeholder]
+        Let's Talk
       </h2>
       <p className="text-gray-500 mb-8 max-w-md leading-relaxed">
-        [Contact subtext placeholder -- one sentence about the best way to reach you.]
+        Email is the best way to reach me, or connect on LinkedIn.
       </p>
 
       <ContactForm />
