@@ -28,13 +28,13 @@ export default function Home() {
           className="text-5xl md:text-7xl font-bold leading-none tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
-          [Heading placeholder]
+          I build products by building alignment first.
         </h1>
         <p
           className="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed"
           style={{ fontFamily: 'var(--font-sans)' }}
         >
-          [Subheading placeholder -- one to two sentences about who you are and what you do.]
+          Because the best roadmap means nothing if the room isn't behind it.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <button className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-3 rounded transition-colors text-sm">

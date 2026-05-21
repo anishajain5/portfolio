@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 
-const FALLBACK_EMAIL = 'placeholder@email.com'
+const FALLBACK_EMAIL = 'anishajain765@gmail.com'
 
 const defaultFields = { name: '', email: '', message: '' }
 

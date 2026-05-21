@@ -25,7 +25,7 @@ export default function ForRecruiter() {
           className="text-4xl md:text-6xl font-bold leading-none tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
-          [One liner placeholder]
+          I build products by building alignment first. Because the best roadmap means nothing if the room isn't behind it.
         </h1>
         <p className="text-lg text-gray-500 max-w-xl leading-relaxed">
           [Brief positioning statement placeholder -- one sentence.]
@@ -42,7 +42,7 @@ export default function ForRecruiter() {
             >
               Availability
             </p>
-            <p className="text-sm text-gray-700 font-medium">[Available from placeholder]</p>
+            <p className="text-sm text-gray-700 font-medium">Available immediately</p>
             <p className="text-sm text-gray-500 mt-1">[Open to full-time / contract placeholder]</p>
           </div>
           <div>
@@ -52,7 +52,7 @@ export default function ForRecruiter() {
             >
               Location
             </p>
-            <p className="text-sm text-gray-700 font-medium">[Location placeholder]</p>
+            <p className="text-sm text-gray-700 font-medium">Baltimore, MD | Open to relocation</p>
             <p className="text-sm text-gray-500 mt-1">[Remote / hybrid / on-site preference placeholder]</p>
           </div>
           <div>
@@ -62,7 +62,7 @@ export default function ForRecruiter() {
             >
               Work Authorization
             </p>
-            <p className="text-sm text-gray-700 font-medium">[Visa status placeholder]</p>
+            <p className="text-sm text-gray-700 font-medium">F1 on OPT, no sponsorship required until Feb 2029</p>
             <p className="text-sm text-gray-500 mt-1">[Sponsorship needed yes/no placeholder]</p>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function ForRecruiter() {
           <p className="text-sm text-gray-500">[Updated placeholder date]</p>
         </div>
         <a
-          href="#"
+          href="/anisha_jain_resume.pdf"
           className="inline-block bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-3 rounded transition-colors text-sm self-start sm:self-auto"
         >
           Download resume
@@ -125,8 +125,8 @@ export default function ForRecruiter() {
       </section>
 
       <ContactSection
-        email="placeholder@email.com"
-        linkedinUrl="https://linkedin.com"
+        email="anishajain765@gmail.com"
+        linkedinUrl="https://www.linkedin.com/in/anishajain98/"
       />
     </div>
   )

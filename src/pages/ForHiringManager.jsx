@@ -108,8 +108,8 @@ export default function ForHiringManager() {
       </section>
 
       <ContactSection
-        email="placeholder@email.com"
-        linkedinUrl="https://linkedin.com"
+        email="anishajain765@gmail.com"
+        linkedinUrl="https://www.linkedin.com/in/anishajain98/"
       />
     </div>
   )
