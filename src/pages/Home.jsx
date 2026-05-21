@@ -46,6 +46,103 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Videos */}
+      <section className="py-12 border-b border-gray-200">
+        <p
+          className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-3"
+          style={{ fontFamily: 'var(--font-sans)' }}
+        >
+          Watch
+        </p>
+        <h2
+          className="text-2xl md:text-3xl font-bold text-ink mb-8"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          [Video section heading placeholder]
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          {/* Video 1 */}
+          <div>
+            <div className="rounded-lg overflow-hidden border border-gray-200 w-full aspect-9/16">
+              <iframe
+                src="https://www.youtube.com/embed/vtfnwN8w-KU"
+                title="My 90 Day Plan Framework"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <p
+              className="mt-3 text-sm font-medium text-ink"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              My 90 Day Plan Framework
+            </p>
+          </div>
+
+          {/* Video 2 */}
+          <div>
+            <div className="rounded-lg overflow-hidden border border-gray-200 w-full aspect-9/16">
+              <iframe
+                src="https://www.youtube.com/embed/G9Bd1UQWZuU"
+                title="A Real PM Tradeoff"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <p
+              className="mt-3 text-sm font-medium text-ink"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              A Real PM Tradeoff
+            </p>
+          </div>
+
+          {/* Placeholder 3 */}
+          <div>
+            <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 w-full aspect-9/16 flex flex-col items-center justify-center gap-2">
+              <p
+                className="text-xs font-medium tracking-widest uppercase text-gray-400"
+                style={{ fontFamily: 'var(--font-sans)' }}
+              >
+                Coming soon
+              </p>
+            </div>
+            <p
+              className="mt-3 text-sm font-medium text-gray-400"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              Video 3 coming soon
+            </p>
+          </div>
+
+          {/* Placeholder 4 */}
+          <div>
+            <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 w-full aspect-9/16 flex flex-col items-center justify-center gap-2">
+              <p
+                className="text-xs font-medium tracking-widest uppercase text-gray-400"
+                style={{ fontFamily: 'var(--font-sans)' }}
+              >
+                Coming soon
+              </p>
+            </div>
+            <p
+              className="mt-3 text-sm font-medium text-gray-400"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              Video 4 coming soon
+            </p>
+          </div>
+
+        </div>
+      </section>
+
       {/* Persona selector -- for repeat visitors switching context */}
       <section className="py-12 border-b border-gray-200">
         <PersonaCards />
