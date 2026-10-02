@@ -1,5 +1,5 @@
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
-import { findCaseStudy } from '../data/caseStudies'
+import { findWorkSample } from '../data/workSamples'
 
 function parseApproach(text) {
   if (!text) return []
@@ -30,7 +30,7 @@ function parseApproach(text) {
 
 function Section({ label, children }) {
   return (
-    <section className="py-8 border-b border-gray-100 last:border-0">
+    <section className="py-8 border-b border-border last:border-0">
       <p
         className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-4"
         style={{ fontFamily: 'var(--font-sans)' }}
@@ -43,18 +43,18 @@ function Section({ label, children }) {
 }
 
 
-export default function CaseStudy() {
+export default function WorkSample() {
   const { id } = useParams()
   const { state } = useLocation()
   const navigate = useNavigate()
   const backTo = state?.from ?? '/'
 
-  const cs = findCaseStudy(id)
+  const ws = findWorkSample(id)
 
-  if (!cs) {
+  if (!ws) {
     return (
       <div className="py-20 text-center">
-        <p className="text-gray-400 mb-4">Case study not found.</p>
+        <p className="text-ink-muted mb-4">Work sample not found.</p>
         <button
           onClick={() => navigate(backTo)}
           className="text-sm text-primary-600 hover:text-primary-700 transition-colors"
@@ -65,55 +65,55 @@ export default function CaseStudy() {
     )
   }
 
-  const approachSegments = parseApproach(cs.approach)
+  const approachSegments = parseApproach(ws.approach)
 
   return (
     <div className="max-w-2xl py-10">
       {/* Back button */}
       <button
         onClick={() => navigate(backTo)}
-        className="flex items-center gap-2 text-sm text-gray-400 hover:text-ink transition-colors mb-10 group"
+        className="flex items-center gap-2 text-sm text-ink-muted hover:text-ink transition-colors mb-10 group"
       >
         <span className="group-hover:-translate-x-0.5 transition-transform">&larr;</span>
         Back
       </button>
 
       {/* Header */}
-      <div className="mb-10 pb-10 border-b border-gray-200">
+      <div className="mb-10 pb-10 border-b border-border">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-2"
           style={{ fontFamily: 'var(--font-sans)' }}
         >
-          {cs.company}
+          {ws.company}
         </p>
-        <p className="text-sm text-gray-500 mb-5 font-medium">{cs.role}</p>
+        <p className="text-sm text-ink-muted mb-5 font-medium">{ws.role}</p>
         <h1
           className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
-          {cs.title}
+          {ws.title}
         </h1>
-        <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-          {cs.summary}
+        <p className="text-base md:text-lg text-ink-muted leading-relaxed">
+          {ws.summary}
         </p>
       </div>
 
       {/* Sections */}
       <Section label="Problem">
-        <p className="text-gray-700 leading-relaxed text-sm md:text-base">{cs.problem}</p>
+        <p className="text-ink-muted leading-relaxed text-sm md:text-base">{ws.problem}</p>
       </Section>
 
       <Section label="Approach">
         <div className="space-y-4">
           {approachSegments.map((seg, i) =>
             seg.type === 'para' ? (
-              <p key={i} className="text-gray-700 leading-relaxed text-sm md:text-base">
+              <p key={i} className="text-ink-muted leading-relaxed text-sm md:text-base">
                 {seg.text}
               </p>
             ) : (
               <ul key={i} className="space-y-2 pl-0 list-none">
                 {seg.items.map((item, j) => (
-                  <li key={j} className="flex gap-3 text-sm md:text-base text-gray-700 leading-relaxed">
+                  <li key={j} className="flex gap-3 text-sm md:text-base text-ink-muted leading-relaxed">
                     <span className="text-primary-600 mt-1 shrink-0">--</span>
                     <span>{item}</span>
                   </li>
@@ -125,14 +125,14 @@ export default function CaseStudy() {
       </Section>
 
       <Section label="Outcome">
-        <p className="text-gray-700 leading-relaxed text-sm md:text-base">{cs.outcome}</p>
+        <p className="text-ink-muted leading-relaxed text-sm md:text-base">{ws.outcome}</p>
       </Section>
 
-      {cs.learned && (
+      {ws.learned && (
         <Section label="What I learned">
           <div className="bg-primary-50 border border-primary-100 rounded-lg px-6 py-5">
-            <p className="text-gray-700 leading-relaxed text-sm md:text-base italic">
-              {cs.learned}
+            <p className="text-ink-muted leading-relaxed text-sm md:text-base italic">
+              {ws.learned}
             </p>
           </div>
         </Section>
@@ -142,7 +142,7 @@ export default function CaseStudy() {
       <div className="pt-10 mt-4">
         <button
           onClick={() => navigate(backTo)}
-          className="flex items-center gap-2 text-sm text-gray-400 hover:text-ink transition-colors group"
+          className="flex items-center gap-2 text-sm text-ink-muted hover:text-ink transition-colors group"
         >
           <span className="group-hover:-translate-x-0.5 transition-transform">&larr;</span>
           Back

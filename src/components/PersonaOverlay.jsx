@@ -14,10 +14,10 @@ const personas = [
     to: '/for/hiring-manager',
   },
   {
-    key: 'pm',
-    label: 'I am a PM',
-    description: 'POV, opinions, and the Anisha.OS build story',
-    to: '/for/pm',
+    key: 'writing',
+    label: 'I want to read',
+    description: 'Essays on AI, product, and systems',
+    to: '/blog',
   },
 ]
 

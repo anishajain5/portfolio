@@ -5,7 +5,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-export async function fetchCaseStudies() {
+export async function fetchWorkSamples() {
   const { data, error } = await supabase
     .from('case_studies')
     .select('*')
@@ -15,7 +15,7 @@ export async function fetchCaseStudies() {
   return data
 }
 
-export async function fetchCaseStudy(id) {
+export async function fetchWorkSample(id) {
   const { data, error } = await supabase
     .from('case_studies')
     .select('*')

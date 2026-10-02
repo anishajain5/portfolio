@@ -3,10 +3,10 @@ import { Link, useLocation } from 'react-router-dom'
 
 const navLinks = [
   { to: '/', label: 'Home' },
-  { to: '/case-studies', label: 'Case Studies' },
+  { to: '/work-samples', label: 'Work Samples' },
   { to: '/for/recruiter', label: 'For Recruiters' },
   { to: '/for/hiring-manager', label: 'For Hiring Managers' },
-  { to: '/for/pm', label: 'For PMs' },
+  { to: '/blog', label: 'Writing' },
 ]
 
 export default function Layout({ children }) {
@@ -15,14 +15,13 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="border-b border-gray-200 sticky top-0 bg-white z-10">
+      <header className="border-b border-border sticky top-0 bg-surface z-10" style={{ fontFamily: 'var(--font-sans)' }}>
         <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
             to="/"
             className="text-xl font-bold text-ink hover:text-primary-600 transition-colors shrink-0"
-            style={{ fontFamily: 'var(--font-display)' }}
           >
-            Anisha's Portfolio
+            anisha.jain
           </Link>
 
           {/* Desktop nav */}
@@ -37,7 +36,7 @@ export default function Layout({ children }) {
                       'text-sm font-medium transition-colors no-underline',
                       isActive
                         ? 'text-primary-600 border-b-2 border-primary-600 pb-0.5'
-                        : 'text-gray-500 hover:text-ink',
+                        : 'text-ink-muted hover:text-ink',
                     ].join(' ')}
                   >
                     {label}
@@ -62,7 +61,7 @@ export default function Layout({ children }) {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-gray-100 bg-white">
+          <div className="md:hidden border-t border-border bg-surface">
             <ul className="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1 list-none m-0 p-0 py-4 px-6">
               {navLinks.map(({ to, label }) => {
                 const isActive = pathname === to
@@ -72,8 +71,8 @@ export default function Layout({ children }) {
                       to={to}
                       onClick={() => setMenuOpen(false)}
                       className={[
-                        'block py-3 text-sm font-medium transition-colors no-underline border-b border-gray-50',
-                        isActive ? 'text-primary-600' : 'text-gray-600 hover:text-ink',
+                        'block py-3 text-sm font-medium transition-colors no-underline border-b border-border',
+                        isActive ? 'text-primary-600' : 'text-ink-muted hover:text-ink',
                       ].join(' ')}
                     >
                       {label}
@@ -86,13 +85,13 @@ export default function Layout({ children }) {
         )}
       </header>
 
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 md:px-6 py-8 md:py-12">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 md:px-6 py-8 md:py-12" style={{ fontFamily: 'var(--font-sans)' }}>
         {children}
       </main>
 
-      <footer className="border-t border-gray-200 mt-auto">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-sm text-gray-500">
-          <span style={{ fontFamily: 'var(--font-display)' }} className="font-semibold text-ink">
+      <footer className="border-t border-border mt-auto" style={{ fontFamily: 'var(--font-sans)' }}>
+        <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-sm text-ink-muted">
+          <span className="font-semibold text-ink">
             Anisha Jain, 2026
           </span>
           <div className="flex items-center gap-6">

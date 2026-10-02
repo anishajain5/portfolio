@@ -1,6 +1,6 @@
-import FilteredCaseStudyGrid from '../components/FilteredCaseStudyGrid'
+import FilteredWorkSampleGrid from '../components/FilteredWorkSampleGrid'
 
-export default function AllCaseStudies() {
+export default function AllWorkSamples() {
   return (
     <div className="py-12">
       <p
@@ -13,9 +13,9 @@ export default function AllCaseStudies() {
         className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-ink mb-10"
         style={{ fontFamily: 'var(--font-display)' }}
       >
-        All Case Studies
+        All Work Samples
       </h1>
-      <FilteredCaseStudyGrid />
+      <FilteredWorkSampleGrid />
     </div>
   )
 }

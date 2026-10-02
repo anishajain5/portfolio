@@ -8,20 +8,20 @@ export default function PlanPhaseBlock({ phase, title, description, index }) {
         >
           {phase}
         </span>
-        <div className="mt-2 text-5xl font-bold text-gray-100 select-none hidden sm:block"
+        <div className="mt-2 text-5xl font-bold text-border select-none hidden sm:block"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           {String(index).padStart(2, '0')}
         </div>
       </div>
-      <div className="flex-1 pb-10 border-b border-gray-100 last:border-0 last:pb-0">
+      <div className="flex-1 pb-10 border-b border-border last:border-0 last:pb-0">
         <h3
           className="text-xl font-bold text-ink mb-3 leading-snug"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           {title}
         </h3>
-        <p className="text-gray-500 leading-relaxed text-sm md:text-base">
+        <p className="text-ink-muted leading-relaxed text-sm md:text-base">
           {description}
         </p>
       </div>

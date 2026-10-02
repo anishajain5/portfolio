@@ -1,5 +1,5 @@
 import PlanPhaseBlock from '../components/PlanPhaseBlock'
-import CaseStudyGrid from '../components/CaseStudyGrid'
+import WorkSampleGrid from '../components/WorkSampleGrid'
 import ContactSection from '../components/ContactSection'
 
 const planPhases = [
@@ -27,7 +27,7 @@ export default function ForHiringManager() {
   return (
     <div>
       {/* Hero */}
-      <section className="py-14 border-b border-gray-200">
+      <section className="py-14 border-b border-border">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-6"
           style={{ fontFamily: 'var(--font-sans)' }}
@@ -38,12 +38,15 @@ export default function ForHiringManager() {
           className="text-3xl md:text-6xl font-bold leading-tight tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
-          I build products by building alignment first. Because the best roadmap means nothing if the room isn't behind it.
+          I find the pattern. Then I build the thing.
         </h1>
+        <p className="text-lg text-ink-muted max-w-xl leading-relaxed">
+          Data, AI, and systems thinking across AWS, ION Group, and Johns Hopkins.
+        </p>
       </section>
 
       {/* 90 day plan */}
-      <section className="py-12 border-b border-gray-200">
+      <section className="py-12 border-b border-border">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-3"
           style={{ fontFamily: 'var(--font-sans)' }}
@@ -69,8 +72,8 @@ export default function ForHiringManager() {
         </div>
       </section>
 
-      {/* Case studies */}
-      <section className="py-12 border-b border-gray-200">
+      {/* Work samples */}
+      <section className="py-12 border-b border-border">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-3"
           style={{ fontFamily: 'var(--font-sans)' }}
@@ -83,7 +86,7 @@ export default function ForHiringManager() {
         >
           Work Samples
         </h2>
-        <CaseStudyGrid />
+        <WorkSampleGrid />
       </section>
 
       <ContactSection

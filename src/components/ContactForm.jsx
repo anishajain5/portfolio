@@ -51,7 +51,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="block text-xs font-medium tracking-widest uppercase text-gray-500 mb-2"
+          className="block text-xs font-medium tracking-widest uppercase text-ink-muted mb-2"
           style={{ fontFamily: 'var(--font-sans)' }}
         >
           Name
@@ -65,7 +65,7 @@ export default function ContactForm() {
           onChange={handleChange}
           disabled={status === 'loading'}
           className="
-            w-full px-4 py-3 text-sm border border-gray-200 rounded
+            w-full px-4 py-3 text-sm border border-border rounded
             focus:outline-none focus:border-primary-600 focus:ring-1 focus:ring-primary-600
             disabled:opacity-50 transition-colors
           "
@@ -77,7 +77,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-xs font-medium tracking-widest uppercase text-gray-500 mb-2"
+          className="block text-xs font-medium tracking-widest uppercase text-ink-muted mb-2"
           style={{ fontFamily: 'var(--font-sans)' }}
         >
           Email
@@ -91,7 +91,7 @@ export default function ContactForm() {
           onChange={handleChange}
           disabled={status === 'loading'}
           className="
-            w-full px-4 py-3 text-sm border border-gray-200 rounded
+            w-full px-4 py-3 text-sm border border-border rounded
             focus:outline-none focus:border-primary-600 focus:ring-1 focus:ring-primary-600
             disabled:opacity-50 transition-colors
           "
@@ -103,7 +103,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-xs font-medium tracking-widest uppercase text-gray-500 mb-2"
+          className="block text-xs font-medium tracking-widest uppercase text-ink-muted mb-2"
           style={{ fontFamily: 'var(--font-sans)' }}
         >
           Message
@@ -117,7 +117,7 @@ export default function ContactForm() {
           onChange={handleChange}
           disabled={status === 'loading'}
           className="
-            w-full px-4 py-3 text-sm border border-gray-200 rounded resize-none
+            w-full px-4 py-3 text-sm border border-border rounded resize-none
             focus:outline-none focus:border-primary-600 focus:ring-1 focus:ring-primary-600
             disabled:opacity-50 transition-colors
           "

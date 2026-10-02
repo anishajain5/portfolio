@@ -1,9 +1,9 @@
-const caseStudies = [
+const workSamples = [
   {
     id: "79e5f9fa-df72-4b98-b747-f567366fa0a3",
     title: "AWS: Scaling Security Remediation for Enterprise Teams",
     company: "AWS",
-    role: "Product Manager Technical Intern, Amazon Web Services",
+    role: "Technical Intern, Amazon Web Services",
     category: "Product",
     summary: "Proposed a prescriptive remediation layer for IAM Access Analyzer to help enterprise security teams move from identifying vulnerabilities to actually resolving them, shifting the product from a monitoring tool to an actionable security partner.",
     problem: "Security teams using IAM Access Analyzer could answer 'who has access to what' but had no scalable path to act on what they found. With backlogs reaching 60,000+ findings, remediation was manual, slow, and fragmented. Engineers often lacked the context or permissions to resolve findings independently, and without a clear delegation workflow, issues sat unresolved for months. The tool was surfacing real risks. The gap was that it stopped there.",
@@ -115,7 +115,7 @@ const caseStudies = [
     id: "6e339ea2-e6f2-41c5-9213-6cbf5039a1c4",
     title: "Planzy: AI-Powered Group Trip Planning",
     company: "Johns Hopkins University",
-    role: "Product Manager, Johns Hopkins Fundamentals of PM Course",
+    role: "Builder, Johns Hopkins Fundamentals of PM Course",
     category: "Product",
     summary: "Designed an AI-powered trip planning app that solves the hardest part of group travel: getting everyone to agree on anything.",
     problem: "Planning a trip alone is manageable. Planning one with a group is a coordination nightmare. Preferences conflict, decision-making stalls, someone always feels overruled, and the person who volunteers to organize ends up doing all the work while absorbing all the blame when something goes wrong. Existing travel apps are built for individual users. None of them are built for the social dynamics of group decision-making.",
@@ -153,10 +153,61 @@ const caseStudies = [
     persona: ["all"],
     order_index: 11,
   },
+  {
+    id: "a3f2c1d4-8e7b-4a96-b5f0-2d9e8c7f6a15",
+    title: "Eulerity Pitch Agent: A RAG-Powered Consultative Sales Tool",
+    company: "Independent Project",
+    role: "Solo Builder — Product, Architecture, and Engineering",
+    category: "Product",
+    summary: "Built a consultative pitch agent for Eulerity, an AI-native marketing automation platform, that references a brand's real campaigns, maps Eulerity's tools to each execution step, and validates every cited stat before it reaches a salesperson. Built in one day as interview preparation for a product role.",
+    problem: "Most AI sales tools take a prompt, stuff in product information, and output a generic pitch. The result reads like a brochure with the prospect's name swapped in. Real sales conversations do not work that way. A salesperson who walks in and says 'you ran the Eat Fresh Refresh campaign in 2023 — here is how we would have run that across all 20,000 locations in half the time' is having a fundamentally different conversation than one reciting feature bullets. I wanted to build an agent that does the second thing.",
+    approach: "- Designed a two-input architecture: a RAG layer for Eulerity's internal knowledge (case studies, product capabilities, proven outcomes) and a parallel Tavily web search layer for real campaigns the prospect has actually run in the market. Running both with Promise.all kept latency close to the slowest individual call rather than their sum.\n- Chunked, embedded, and stored Eulerity's case study corpus using Voyage AI and Supabase pgvector. Goal-aware embedding queries (brand + industry + goals) pull meaningfully different context: 'improve ROAS' retrieves ROI and CPC data; 'franchise consistency' retrieves brand compliance chunks. Same brand, different goals, different pitch.\n- Added a second lightweight Claude validation call that cross-references every cited stat against the retrieved RAG chunks before output. Anything unverifiable is flagged in the UI with a warning. This is the difference between a demo and a production system.\n- Mapped Eulerity's 10 product tools to business goals and campaign execution steps so the agent recommends tools contextually, not generically: 'Step 2: Creative AI Engine generates 500 localized ad variations automatically — what your agency took 6 weeks to produce manually.'\n- Implemented 10 guardrails from the start including stat validation, confidence flags with source URLs, API key auth on every route, stateless backend, rate limiting, and graceful fallbacks on every external call.",
+    outcome: "Deployed a full-stack consultative sales agent (React, Node/Express, Supabase pgvector, Voyage AI, Anthropic API, Tavily) in one day. Cost per pitch: $0.035 versus an estimated $0.15 for a naive long-context approach. At 50 pitches per day, the agent runs at approximately $52/month with clear optimization paths including input caching and swapping the validator to a cheaper model for the fact-check step.",
+    learned: "RAG is an architectural pattern, not a library. The value is in the separation of concerns — retrieval and generation are independent systems that improve independently. Agentic pipelines need failure modes designed upfront, not after. And in AI sales tools, the hard decisions are not the architecture choices. They are the output structure decisions: what sections does the pitch have, in what order, and what does each section need to earn trust.",
+    persona: ["all"],
+    order_index: 12,
+  },
+  {
+    id: "f4b8c2a1-3d6e-4f89-9a12-7c5e0d8b4f21",
+    title: "Ours: A Place for Couples",
+    company: "Ours",
+    role: "Founder & Builder",
+    category: "Independent",
+    summary: "Built a relationship app for couples from zero to live in under two weeks using Claude Code. Features encrypted-at-rest messages with per-couple keys, real-time sync via Ably, daily prompts with mutual reveal, streak engine, shared memories, wishlist, and bucket list.",
+    liveUrl: "https://relationshiphq.vercel.app",
+    githubUrl: "https://github.com/gupta-saransh/Ours",
+    status: "Live · 15 beta users",
+    persona: ["all"],
+    order_index: 13,
+  },
+  {
+    id: "9d3e7a5c-1b4f-4c82-8e6a-2f9d5b7c3a10",
+    title: "RAG Pitch Generator",
+    company: "Eulerity",
+    role: "AI Builder",
+    category: "AI",
+    summary: "Built a RAG-powered pitch agent using Supabase pgvector and Voyage AI embeddings with parallel Tavily web searches. Cuts manual pitch generation to under 2 minutes.",
+    liveUrl: "https://eulerity-pitch-generator.vercel.app",
+    githubUrl: "https://github.com/anishajain5/eulerity-pitch-generator",
+    status: "Live",
+    persona: ["all"],
+    order_index: 14,
+  },
+  {
+    id: "2c6f9b4d-8a1e-4d75-b3c9-6e0a4f8d2b57",
+    title: "CLE Data Initiatives",
+    company: "Johns Hopkins University",
+    role: "Strategy Fellow",
+    category: "Data and Analytics",
+    summary: "Replaced a fully manual admissions workflow with an automated Power BI pipeline connected to the University Data Warehouse. Built Power Automate flows for acceptance letter automation, cutting outreach time from 4 hours to 30 minutes biweekly.",
+    status: "Shipped",
+    persona: ["all"],
+    order_index: 15,
+  },
 ]
 
-export default caseStudies
+export default workSamples
 
-export function findCaseStudy(id) {
-  return caseStudies.find(cs => cs.id === id) ?? null
+export function findWorkSample(id) {
+  return workSamples.find(ws => ws.id === id) ?? null
 }

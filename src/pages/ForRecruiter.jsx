@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import caseStudies from '../data/caseStudies'
-import CaseStudyCard from '../components/CaseStudyCard'
+import workSamples from '../data/workSamples'
+import WorkSampleCard from '../components/WorkSampleCard'
 import ContactSection from '../components/ContactSection'
 
 const FEATURED_IDS = [
@@ -10,18 +10,23 @@ const FEATURED_IDS = [
   '31dc1e29-3fa5-4177-a1aa-93d97280e9d5', // Biome
   '0b019b80-d3e1-4b25-b94b-2e319acf6f2f', // TacMed
 ]
-const featuredStudies = FEATURED_IDS.map(id => caseStudies.find(cs => cs.id === id))
+const featuredStudies = FEATURED_IDS.map(id => workSamples.find(ws => ws.id === id))
 
 const FILTERS = ['All', 'Product', 'Data and Analytics', 'Healthcare', 'Strategy', 'Independent']
 
-const skills = ['Roadmap', 'GTM Execution', 'User Research', 'SQL', 'Power BI', 'Claude Code']
+const skills = [
+  'Roadmap', 'GTM Execution', 'User Research', 'Systems Thinking', 'Stakeholder Management',
+  'Spec Writing', 'Sprint Planning', 'Agile', 'SQL', 'Python', 'Power BI', 'DAX',
+  'Power Automate', 'Tableau', 'Claude API', 'Azure OpenAI', 'Prompt Engineering', 'RAG',
+  'LLM Evaluation', 'Jira', 'Confluence', 'Figma', 'Claude Code',
+]
 
-function FeaturedCaseStudies() {
+function FeaturedWorkSamples() {
   const [active, setActive] = useState('All')
   const { pathname } = useLocation()
   const filtered = active === 'All'
     ? featuredStudies
-    : featuredStudies.filter(cs => cs.category === active)
+    : featuredStudies.filter(ws => ws.category === active)
 
   return (
     <div>
@@ -34,7 +39,7 @@ function FeaturedCaseStudies() {
               'px-4 py-1.5 text-sm font-medium rounded-full border transition-colors',
               active === f
                 ? 'bg-primary-600 border-primary-600 text-white'
-                : 'border-gray-200 text-gray-500 hover:border-primary-600 hover:text-primary-600',
+                : 'border-border text-ink-muted hover:border-primary-600 hover:text-primary-600',
             ].join(' ')}
           >
             {f}
@@ -42,22 +47,25 @@ function FeaturedCaseStudies() {
         ))}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {filtered.map(cs => (
-          <CaseStudyCard
-            key={cs.id}
-            id={cs.id}
-            company={cs.company}
-            role={cs.role}
-            summary={cs.summary}
+        {filtered.map(ws => (
+          <WorkSampleCard
+            key={ws.id}
+            id={ws.id}
+            company={ws.company}
+            role={ws.role}
+            summary={ws.summary}
+            liveUrl={ws.liveUrl}
+            githubUrl={ws.githubUrl}
+            status={ws.status}
           />
         ))}
       </div>
       <div className="mt-6">
         <Link
-          to="/case-studies"
+          to="/work-samples"
           className="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
         >
-          See all case studies
+          See all work samples
         </Link>
       </div>
     </div>
@@ -68,7 +76,7 @@ export default function ForRecruiter() {
   return (
     <div>
       {/* One liner */}
-      <section className="py-14 border-b border-gray-200">
+      <section className="py-14 border-b border-border">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-6"
           style={{ fontFamily: 'var(--font-sans)' }}
@@ -79,15 +87,15 @@ export default function ForRecruiter() {
           className="text-3xl md:text-6xl font-bold leading-tight tracking-tight text-ink mb-6"
           style={{ fontFamily: 'var(--font-display)' }}
         >
-          I build products by building alignment first. Because the best roadmap means nothing if the room isn't behind it.
+          I find the pattern. Then I build the thing.
         </h1>
-        <p className="text-lg text-gray-500 max-w-xl leading-relaxed">
-          Data-native PM with 3+ years building products across enterprise security, fintech, and higher education.
+        <p className="text-lg text-ink-muted max-w-xl leading-relaxed">
+          Data, AI, and systems thinking across AWS, ION Group, and Johns Hopkins.
         </p>
       </section>
 
       {/* Quick facts */}
-      <section className="py-10 border-b border-gray-200">
+      <section className="py-10 border-b border-border">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <p
@@ -96,8 +104,8 @@ export default function ForRecruiter() {
             >
               Availability
             </p>
-            <p className="text-sm text-gray-700 font-medium">Available immediately</p>
-            <p className="text-sm text-gray-500 mt-1">Open to full-time and contract roles</p>
+            <p className="text-sm text-ink-muted font-medium">Available immediately</p>
+            <p className="text-sm text-ink-muted mt-1">Open to full-time and contract roles</p>
           </div>
           <div>
             <p
@@ -106,8 +114,8 @@ export default function ForRecruiter() {
             >
               Location
             </p>
-            <p className="text-sm text-gray-700 font-medium">Baltimore, MD | Open to relocation</p>
-            <p className="text-sm text-gray-500 mt-1">Open to remote, hybrid, and on-site</p>
+            <p className="text-sm text-ink-muted font-medium">Baltimore, MD | Open to relocation</p>
+            <p className="text-sm text-ink-muted mt-1">Open to remote, hybrid, and on-site</p>
           </div>
           <div>
             <p
@@ -116,14 +124,14 @@ export default function ForRecruiter() {
             >
               Work Authorization
             </p>
-            <p className="text-sm text-gray-700 font-medium">F1 on OPT, no sponsorship required until Feb 2029</p>
-            <p className="text-sm text-gray-500 mt-1">No sponsorship required</p>
+            <p className="text-sm text-ink-muted font-medium">F1 on OPT, no sponsorship required until Feb 2029</p>
+            <p className="text-sm text-ink-muted mt-1">No sponsorship required</p>
           </div>
         </div>
       </section>
 
       {/* Skills */}
-      <section className="py-10 border-b border-gray-200">
+      <section className="py-10 border-b border-border">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-6"
           style={{ fontFamily: 'var(--font-sans)' }}
@@ -134,7 +142,7 @@ export default function ForRecruiter() {
           {skills.map((skill, i) => (
             <span
               key={i}
-              className="px-4 py-2 text-sm border border-gray-200 rounded-full text-gray-700 hover:border-primary-600 hover:text-primary-600 transition-colors"
+              className="px-4 py-2 text-sm border border-border rounded-full text-ink-muted hover:border-primary-600 hover:text-primary-600 transition-colors"
             >
               {skill}
             </span>
@@ -143,7 +151,7 @@ export default function ForRecruiter() {
       </section>
 
       {/* Resume */}
-      <section className="py-10 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+      <section className="py-10 border-b border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
         <div>
           <h2
             className="text-xl font-bold text-ink mb-1"
@@ -151,7 +159,7 @@ export default function ForRecruiter() {
           >
             Resume
           </h2>
-          <p className="text-sm text-gray-500">Updated May 2026</p>
+          <p className="text-sm text-ink-muted">Updated August 2026</p>
         </div>
         <a
           href="/anisha_jain_resume.pdf"
@@ -163,8 +171,8 @@ export default function ForRecruiter() {
         </a>
       </section>
 
-      {/* Case studies */}
-      <section className="py-12 border-b border-gray-200">
+      {/* Work samples */}
+      <section className="py-12 border-b border-border">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600 mb-3"
           style={{ fontFamily: 'var(--font-sans)' }}
@@ -177,7 +185,7 @@ export default function ForRecruiter() {
         >
           Work Samples
         </h2>
-        <FeaturedCaseStudies />
+        <FeaturedWorkSamples />
       </section>
 
       <ContactSection

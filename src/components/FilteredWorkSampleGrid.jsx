@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import caseStudies from '../data/caseStudies'
-import CaseStudyCard from './CaseStudyCard'
+import workSamples from '../data/workSamples'
+import WorkSampleCard from './WorkSampleCard'
 
 const FILTERS = ['All', 'Product', 'Data and Analytics', 'Healthcare', 'Strategy', 'Independent']
 
-export default function FilteredCaseStudyGrid() {
+export default function FilteredWorkSampleGrid() {
   const [active, setActive] = useState('All')
-  const filtered = active === 'All' ? caseStudies : caseStudies.filter(cs => cs.category === active)
+  const filtered = active === 'All' ? workSamples : workSamples.filter(ws => ws.category === active)
 
   return (
     <div>
@@ -19,7 +19,7 @@ export default function FilteredCaseStudyGrid() {
               'px-4 py-1.5 text-sm font-medium rounded-full border transition-colors',
               active === f
                 ? 'bg-primary-600 border-primary-600 text-white'
-                : 'border-gray-200 text-gray-500 hover:border-primary-600 hover:text-primary-600',
+                : 'border-border text-ink-muted hover:border-primary-600 hover:text-primary-600',
             ].join(' ')}
           >
             {f}
@@ -27,13 +27,16 @@ export default function FilteredCaseStudyGrid() {
         ))}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {filtered.map(cs => (
-          <CaseStudyCard
-            key={cs.id}
-            id={cs.id}
-            company={cs.company}
-            role={cs.role}
-            summary={cs.summary}
+        {filtered.map(ws => (
+          <WorkSampleCard
+            key={ws.id}
+            id={ws.id}
+            company={ws.company}
+            role={ws.role}
+            summary={ws.summary}
+            liveUrl={ws.liveUrl}
+            githubUrl={ws.githubUrl}
+            status={ws.status}
           />
         ))}
       </div>
