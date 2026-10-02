@@ -125,6 +125,11 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          {/* Currently card */}
+          <div className="w-full lg:w-auto shrink-0">
+            <CurrentlyCard />
+          </div>
         </div>
       </section>
 
@@ -295,11 +300,6 @@ export default function Home() {
             </svg>
           </button>
         </div>
-      </section>
-
-      {/* Currently */}
-      <section className="py-12">
-        <CurrentlyCard />
       </section>
     </div>
   )
