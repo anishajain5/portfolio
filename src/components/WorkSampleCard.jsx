@@ -20,7 +20,7 @@ export default function WorkSampleCard({ id, company, role, summary, bullets, li
   const { pathname } = useLocation()
 
   return (
-    <div className="border border-border rounded-lg p-6 flex flex-col hover:border-primary-600 transition-colors">
+    <div className="border border-border bg-white/85 rounded-lg p-6 flex flex-col hover:border-primary-600 transition-colors">
       <div className="flex items-start justify-between gap-3 mb-2">
         <p
           className="text-xs font-medium tracking-widest uppercase text-primary-600"

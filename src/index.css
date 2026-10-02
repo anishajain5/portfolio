@@ -8,8 +8,8 @@
   --color-primary-300: #97c3e6;
   --color-primary-400: #79aedd;
   --color-primary-500: #5b9bd5;
-  --color-primary-600: #2c5f94;
-  --color-primary-700: #1e4673;
+  --color-primary-600: #14395f;
+  --color-primary-700: #0d2846;
   --color-primary-800: #2c5480;
   --color-primary-900: #1e3a5f;
 
@@ -20,11 +20,11 @@
 
   /* Neutral scale for text and backgrounds */
   --color-bg: #f0f7ff;
-  --color-ink: #1e3a5f;
-  --color-body: #1a2744;
-  --color-ink-muted: #2c3e5c;
+  --color-ink: #0f2745;
+  --color-body: #0b172e;
+  --color-ink-muted: #14233d;
   --color-surface: #ffffff;
-  --color-border: #bdd7ee;
+  --color-border: #8fb4d6;
 
   /* Font families */
   --font-display: "Courier New", monospace;
@@ -68,6 +68,19 @@
   }
 }
 
+.animate-cloud {
+  animation: cloud-drift 28s ease-in-out infinite alternate;
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(-6vw);
+  }
+  to {
+    transform: translateX(8vw);
+  }
+}
+
 .animate-drift {
   animation: drift 8s ease-in-out infinite;
 }
@@ -85,7 +98,7 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--color-body);
-  font-weight: 500;
+  font-weight: 700;
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -93,7 +106,11 @@ body {
 
 p {
   color: var(--color-body);
-  font-weight: 500;
+  font-weight: 700;
+}
+
+a, button, span, li {
+  font-weight: 700;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -101,9 +118,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Secondary/muted text always renders at this weight, regardless of
-   any font-weight utility stacked alongside it -- unlayered rules
-   beat Tailwind's layered utilities by design. */
+/* Courier New only ships regular and bold, so muted text is bold too for legibility.
+   Unlayered rules beat Tailwind's layered utilities by design. */
 .text-ink-muted {
-  font-weight: 400;
+  font-weight: 700;
+}
+
+/* Blue text is bold so the thin monospace font stays legible */
+.text-primary-600,
+.text-primary-700 {
+  font-weight: 700;
 }

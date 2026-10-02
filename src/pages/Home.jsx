@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import PersonaCards from '../components/PersonaCards'
 import CurrentlyCard from '../components/CurrentlyCard'
+import GhibliBackground from '../components/GhibliBackground'
 import { CardBullets } from '../components/WorkSampleCard'
 import workSamples from '../data/workSamples'
 
@@ -19,13 +20,6 @@ function useTypewriter(line, { typingSpeed = 55 } = {}) {
 
   return text
 }
-
-const BLOBS = [
-  { color: '#A78BFA', size: 'min(46vw, 520px)', top: '-8%', left: '2%', delay: '0s' },
-  { color: '#67E8F9', size: 'min(40vw, 460px)', top: '8%', left: '62%', delay: '2s' },
-  { color: '#FCA5A5', size: 'min(36vw, 420px)', top: '58%', left: '-4%', delay: '4s' },
-  { color: '#5B9BD5', size: 'min(44vw, 500px)', top: '50%', left: '72%', delay: '6s' },
-]
 
 const FEATURED_IDS = [
   'f4b8c2a1-3d6e-4f89-9a12-7c5e0d8b4f21', // Ribbon
@@ -69,26 +63,8 @@ export default function Home() {
 
   return (
     <div>
-      {/* Full-page animated background; pauses after 10 seconds */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-        {BLOBS.map((blob, i) => (
-          <span
-            key={i}
-            className="absolute rounded-full animate-drift"
-            style={{
-              width: blob.size,
-              height: blob.size,
-              top: blob.top,
-              left: blob.left,
-              backgroundColor: blob.color,
-              opacity: 0.18,
-              animationDelay: blob.delay,
-              animationPlayState: animationsStopped ? 'paused' : 'running',
-              filter: 'blur(2px)',
-            }}
-          />
-        ))}
-      </div>
+      {/* Full-page Ghibli style background; clouds pause after 10 seconds */}
+      <GhibliBackground paused={animationsStopped} />
 
       {/* Hero */}
       <section
@@ -160,7 +136,7 @@ export default function Home() {
           </button>
           <div ref={workScrollRef} className="flex flex-1 gap-4 overflow-x-auto scrollbar-hide pb-4">
             {featuredStudies.map(ws => (
-              <div key={ws.id} className="w-64 md:w-80 shrink-0 border border-border rounded-lg p-5 md:p-6 flex flex-col hover:border-primary-600 transition-colors">
+              <div key={ws.id} className="w-64 md:w-80 shrink-0 border border-border bg-white/85 rounded-lg p-5 md:p-6 flex flex-col hover:border-primary-600 transition-colors">
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <p
                     className="text-xs font-medium tracking-widest uppercase text-primary-600"
