@@ -1,6 +1,22 @@
 import { Link, useLocation } from 'react-router-dom'
 
-export default function WorkSampleCard({ id, company, role, summary, liveUrl, githubUrl, status }) {
+export function CardBullets({ bullets, summary }) {
+  if (!bullets?.length) {
+    return <p className="text-sm text-ink-muted leading-relaxed flex-1">{summary}</p>
+  }
+  return (
+    <ul className="flex-1 list-none m-0 p-0 space-y-2">
+      {bullets.map((bullet, i) => (
+        <li key={i} className="flex gap-2.5 text-sm text-ink-muted leading-relaxed">
+          <span className="text-primary-600 shrink-0" aria-hidden="true">&bull;</span>
+          <span>{bullet}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export default function WorkSampleCard({ id, company, role, summary, bullets, liveUrl, githubUrl, status }) {
   const { pathname } = useLocation()
 
   return (
@@ -19,7 +35,7 @@ export default function WorkSampleCard({ id, company, role, summary, liveUrl, gi
         )}
       </div>
       <p className="text-sm text-ink-muted mb-3 font-medium">{role}</p>
-      <p className="text-sm text-ink-muted leading-relaxed flex-1">{summary}</p>
+      <CardBullets bullets={bullets} summary={summary} />
       {(id || liveUrl || githubUrl) && (
         <div className="mt-5 flex flex-wrap items-center gap-4">
           {id && (

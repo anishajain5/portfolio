@@ -7,6 +7,7 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import WorkSample from './pages/WorkSample'
 import AllWorkSamples from './pages/AllWorkSamples'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/work-sample/:id" element={<WorkSample />} />
           <Route path="/work-samples" element={<AllWorkSamples />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>

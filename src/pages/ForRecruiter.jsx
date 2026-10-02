@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import workSamples from '../data/workSamples'
 import WorkSampleCard from '../components/WorkSampleCard'
 import ContactSection from '../components/ContactSection'
 
 const FEATURED_IDS = [
+  'f4b8c2a1-3d6e-4f89-9a12-7c5e0d8b4f21', // Ribbon
   '79e5f9fa-df72-4b98-b747-f567366fa0a3', // AWS
   'd6bf22d9-6a70-4824-b296-e3711205acf3', // ION Group
-  '31dc1e29-3fa5-4177-a1aa-93d97280e9d5', // Biome
+  'a3f2c1d4-8e7b-4a96-b5f0-2d9e8c7f6a15', // Eulerity Pitch Agent
   '0b019b80-d3e1-4b25-b94b-2e319acf6f2f', // TacMed
+  '31dc1e29-3fa5-4177-a1aa-93d97280e9d5', // Biome
 ]
 const featuredStudies = FEATURED_IDS.map(id => workSamples.find(ws => ws.id === id))
 
@@ -23,7 +25,6 @@ const skills = [
 
 function FeaturedWorkSamples() {
   const [active, setActive] = useState('All')
-  const { pathname } = useLocation()
   const filtered = active === 'All'
     ? featuredStudies
     : featuredStudies.filter(ws => ws.category === active)
@@ -51,9 +52,10 @@ function FeaturedWorkSamples() {
           <WorkSampleCard
             key={ws.id}
             id={ws.id}
-            company={ws.company}
-            role={ws.role}
+            company={ws.cardTitle ?? ws.company}
+            role={ws.cardRole ?? ws.role}
             summary={ws.summary}
+            bullets={ws.bullets}
             liveUrl={ws.liveUrl}
             githubUrl={ws.githubUrl}
             status={ws.status}
@@ -104,7 +106,7 @@ export default function ForRecruiter() {
             >
               Availability
             </p>
-            <p className="text-sm text-ink-muted font-medium">Available immediately</p>
+            <p className="text-sm text-ink-muted font-medium">Available within 2 weeks</p>
             <p className="text-sm text-ink-muted mt-1">Open to full-time and contract roles</p>
           </div>
           <div>
@@ -124,8 +126,7 @@ export default function ForRecruiter() {
             >
               Work Authorization
             </p>
-            <p className="text-sm text-ink-muted font-medium">F1 on OPT, no sponsorship required until Feb 2029</p>
-            <p className="text-sm text-ink-muted mt-1">No sponsorship required</p>
+            <p className="text-sm text-ink-muted font-medium">F1 on OPT. No sponsorship required until Feb 2029.</p>
           </div>
         </div>
       </section>

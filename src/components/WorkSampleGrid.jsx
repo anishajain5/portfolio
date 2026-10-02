@@ -8,9 +8,10 @@ export default function WorkSampleGrid() {
         <WorkSampleCard
           key={ws.id}
           id={ws.id}
-          company={ws.company}
-          role={ws.role}
+          company={ws.cardTitle ?? ws.company}
+          role={ws.cardRole ?? ws.role}
           summary={ws.summary}
+            bullets={ws.bullets}
           liveUrl={ws.liveUrl}
           githubUrl={ws.githubUrl}
           status={ws.status}

@@ -2,7 +2,7 @@ const ROWS = [
   { icon: '📺', label: 'watching', value: 'Mom + Modern Family' },
   { icon: '📖', label: 'reading', value: 'Harry Potter & the Half-Blood Prince · Things That Matter' },
   { icon: '☕', label: 'drinking', value: 'ice lattes' },
-  { icon: '💼', label: 'working', value: 'Technical Project Manager at IAM Enterprise Company' },
+  { icon: '💼', label: 'working', value: 'Technical Project Manager at Catalyst Community' },
   { icon: '🛠️', label: 'building', value: 'Ribbon: App for Couples', href: 'https://theribbonapp.com' },
 ]
 
