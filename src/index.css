@@ -8,8 +8,8 @@
   --color-primary-300: #97c3e6;
   --color-primary-400: #79aedd;
   --color-primary-500: #5b9bd5;
-  --color-primary-600: #4a87c0;
-  --color-primary-700: #3a6d9e;
+  --color-primary-600: #2c5f94;
+  --color-primary-700: #1e4673;
   --color-primary-800: #2c5480;
   --color-primary-900: #1e3a5f;
 
@@ -77,6 +77,10 @@
 }
 
 /* Base styles */
+html {
+  font-size: 112.5%;
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);

@@ -21,17 +21,17 @@ The mistake to avoid is treating fine-tuning as a knowledge injection tool. It t
   },
   {
     id: 2,
-    title: 'What Building Ours Taught Me About Product Decisions',
-    slug: 'building-ours-product-decisions',
+    title: 'What Building Ribbon Taught Me About Product Decisions',
+    slug: 'building-ribbon-product-decisions',
     date: '2026-08-02',
     readTime: '5 min read',
     category: 'Product',
     excerpt: 'Lessons from shipping a live app in two weeks using Claude Code.',
-    content: `I built and shipped Ours, a place for couples, in two weeks using Claude Code. The constraint was not technical skill. It was decision speed.
+    content: `I built and shipped Ribbon, a place for couples, in two weeks using Claude Code. The constraint was not technical skill. It was decision speed.
 
 When you are moving that fast, every feature request is really a prioritization test in disguise. The instinct is to say yes to everything because it all feels achievable. The discipline is realizing that "achievable" and "worth building right now" are different questions.
 
-The biggest lesson: scope the emotional core first, not the feature list. Ours works because the first thing a couple sees when they open it does one thing well. Everything else is in service of that one thing, not competing with it for attention.
+The biggest lesson: scope the emotional core first, not the feature list. Ribbon works because the first thing a couple sees when they open it does one thing well. Everything else is in service of that one thing, not competing with it for attention.
 
 The second lesson: shipping fast does not mean shipping thin. Speed came from cutting decisions, not cutting quality. I made calls quickly and moved on, rather than building three versions of the same screen to compare later.
 

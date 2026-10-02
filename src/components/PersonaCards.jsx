@@ -25,14 +25,14 @@ export default function PersonaCards() {
   return (
     <section className="bg-ink rounded-xl px-8 py-12 md:py-14">
       <p
-        className="text-xs font-medium tracking-widest uppercase text-primary-500 mb-4"
-        style={{ fontFamily: 'var(--font-sans)' }}
+        className="text-xs font-medium tracking-widest uppercase mb-4"
+        style={{ fontFamily: 'var(--font-sans)', color: '#ffffff' }}
       >
         Navigate by role
       </p>
       <h2
-        className="text-3xl md:text-4xl font-bold text-white mb-10 leading-tight"
-        style={{ fontFamily: 'var(--font-display)' }}
+        className="text-3xl md:text-4xl font-bold mb-10 leading-tight"
+        style={{ fontFamily: 'var(--font-display)', color: '#ffffff' }}
       >
         Where do you want to go?
       </h2>

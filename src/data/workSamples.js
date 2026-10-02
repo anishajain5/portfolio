@@ -1,6 +1,7 @@
 const workSamples = [
   {
     id: "79e5f9fa-df72-4b98-b747-f567366fa0a3",
+    date: "2025-08",
     title: "AWS: Scaling Security Remediation for Enterprise Teams",
     company: "AWS",
     role: "Technical Intern, Amazon Web Services",
@@ -15,6 +16,7 @@ const workSamples = [
   },
   {
     id: "d6bf22d9-6a70-4824-b296-e3711205acf3",
+    date: "2024-07",
     title: "ION Group: Building a Scalable Customer Satisfaction Program",
     company: "ION Group",
     role: "Data Systems Consultant, ION Group",
@@ -29,6 +31,7 @@ const workSamples = [
   },
   {
     id: "5ca3a07d-77fb-4333-a548-d071fd1dc6e7",
+    date: "2024-07",
     title: "ION Group: Designing a Customer Health Ecosystem",
     company: "ION Group",
     role: "Data Systems Consultant, ION Group",
@@ -43,6 +46,7 @@ const workSamples = [
   },
   {
     id: "31dc1e29-3fa5-4177-a1aa-93d97280e9d5",
+    date: "2026-03",
     title: "Biome: A Health App for Women Who Are Tired of Feeling Guilty",
     company: "Independent Concept",
     role: "Product Designer and PM, Independent Concept",
@@ -57,6 +61,7 @@ const workSamples = [
   },
   {
     id: "2e52a791-bbb0-494f-afa0-64d903c25bf1",
+    date: "2025-11",
     title: "CAE: Understanding Barriers to AI Adoption in Education",
     company: "Council for Aid to Education",
     role: "Strategy Consultant, Johns Hopkins Capstone Project",
@@ -71,6 +76,7 @@ const workSamples = [
   },
   {
     id: "84635c1c-9ccb-4395-a1a3-9a4853e4eec6",
+    date: "2024-11",
     title: "Redesigning Outlook for High-Volume, Multi-Role Users",
     company: "Johns Hopkins University",
     role: "UX Researcher and Product Designer, Johns Hopkins HCI Project",
@@ -85,6 +91,7 @@ const workSamples = [
   },
   {
     id: "0b019b80-d3e1-4b25-b94b-2e319acf6f2f",
+    date: "2025-04",
     title: "TacMed: Digitizing the Military Patient Care Pathway",
     company: "Johns Hopkins University",
     role: "Product Designer and Strategist, Johns Hopkins Capstone Project",
@@ -99,6 +106,7 @@ const workSamples = [
   },
   {
     id: "831305a8-7196-45ea-9d94-9e08847f3c48",
+    date: "2025-04",
     title: "Ethiack: Go-to-Market Strategy for UK, Ireland, and Spain",
     company: "Ethiack",
     role: "Strategy Consultant, Johns Hopkins Immersion Program",
@@ -113,6 +121,7 @@ const workSamples = [
   },
   {
     id: "6e339ea2-e6f2-41c5-9213-6cbf5039a1c4",
+    date: "2024-10",
     title: "Planzy: AI-Powered Group Trip Planning",
     company: "Johns Hopkins University",
     role: "Builder, Johns Hopkins Fundamentals of PM Course",
@@ -127,6 +136,7 @@ const workSamples = [
   },
   {
     id: "ef0d69d8-ae24-45f5-9f76-8e9e7f24c9a6",
+    date: "2025-01",
     title: "Johns Hopkins Hospital: Reducing Nurse Burnout in a Psychiatric Ward",
     company: "Johns Hopkins Hospital",
     role: "Strategy Consultant, Johns Hopkins Patient Safety Collaborative",
@@ -141,6 +151,7 @@ const workSamples = [
   },
   {
     id: "db2ce3a9-ce52-4a41-8f2c-c50c6df6a848",
+    date: "2025-05",
     title: "Medicare Hospice: Visualizing Care Quality Across 2021 to 2024",
     company: "Johns Hopkins University",
     role: "Data Analyst and Visualization Designer, Johns Hopkins Data Informed Strategy Course",
@@ -155,6 +166,7 @@ const workSamples = [
   },
   {
     id: "a3f2c1d4-8e7b-4a96-b5f0-2d9e8c7f6a15",
+    date: "2026-06",
     title: "Eulerity Pitch Agent: A RAG-Powered Consultative Sales Tool",
     company: "Independent Project",
     role: "Solo Builder — Product, Architecture, and Engineering",
@@ -164,37 +176,29 @@ const workSamples = [
     approach: "- Designed a two-input architecture: a RAG layer for Eulerity's internal knowledge (case studies, product capabilities, proven outcomes) and a parallel Tavily web search layer for real campaigns the prospect has actually run in the market. Running both with Promise.all kept latency close to the slowest individual call rather than their sum.\n- Chunked, embedded, and stored Eulerity's case study corpus using Voyage AI and Supabase pgvector. Goal-aware embedding queries (brand + industry + goals) pull meaningfully different context: 'improve ROAS' retrieves ROI and CPC data; 'franchise consistency' retrieves brand compliance chunks. Same brand, different goals, different pitch.\n- Added a second lightweight Claude validation call that cross-references every cited stat against the retrieved RAG chunks before output. Anything unverifiable is flagged in the UI with a warning. This is the difference between a demo and a production system.\n- Mapped Eulerity's 10 product tools to business goals and campaign execution steps so the agent recommends tools contextually, not generically: 'Step 2: Creative AI Engine generates 500 localized ad variations automatically — what your agency took 6 weeks to produce manually.'\n- Implemented 10 guardrails from the start including stat validation, confidence flags with source URLs, API key auth on every route, stateless backend, rate limiting, and graceful fallbacks on every external call.",
     outcome: "Deployed a full-stack consultative sales agent (React, Node/Express, Supabase pgvector, Voyage AI, Anthropic API, Tavily) in one day. Cost per pitch: $0.035 versus an estimated $0.15 for a naive long-context approach. At 50 pitches per day, the agent runs at approximately $52/month with clear optimization paths including input caching and swapping the validator to a cheaper model for the fact-check step.",
     learned: "RAG is an architectural pattern, not a library. The value is in the separation of concerns — retrieval and generation are independent systems that improve independently. Agentic pipelines need failure modes designed upfront, not after. And in AI sales tools, the hard decisions are not the architecture choices. They are the output structure decisions: what sections does the pitch have, in what order, and what does each section need to earn trust.",
+    liveUrl: "https://eulerity-pitch-generator.vercel.app",
+    githubUrl: "https://github.com/anishajain5/eulerity-pitch-generator",
+    status: "Live",
     persona: ["all"],
     order_index: 12,
   },
   {
     id: "f4b8c2a1-3d6e-4f89-9a12-7c5e0d8b4f21",
-    title: "Ours: A Place for Couples",
-    company: "Ours",
+    pinned: true,
+    date: "2026-07",
+    title: "Ribbon: App for Couples",
+    company: "Ribbon",
     role: "Founder & Builder",
-    category: "Independent",
+    category: "Product",
     summary: "Built a relationship app for couples from zero to live in under two weeks using Claude Code. Features encrypted-at-rest messages with per-couple keys, real-time sync via Ably, daily prompts with mutual reveal, streak engine, shared memories, wishlist, and bucket list.",
-    liveUrl: "https://relationshiphq.vercel.app",
-    githubUrl: "https://github.com/gupta-saransh/Ours",
+    liveUrl: "https://theribbonapp.com",
     status: "Live · 15 beta users",
     persona: ["all"],
     order_index: 13,
   },
   {
-    id: "9d3e7a5c-1b4f-4c82-8e6a-2f9d5b7c3a10",
-    title: "RAG Pitch Generator",
-    company: "Eulerity",
-    role: "AI Builder",
-    category: "AI",
-    summary: "Built a RAG-powered pitch agent using Supabase pgvector and Voyage AI embeddings with parallel Tavily web searches. Cuts manual pitch generation to under 2 minutes.",
-    liveUrl: "https://eulerity-pitch-generator.vercel.app",
-    githubUrl: "https://github.com/anishajain5/eulerity-pitch-generator",
-    status: "Live",
-    persona: ["all"],
-    order_index: 14,
-  },
-  {
     id: "2c6f9b4d-8a1e-4d75-b3c9-6e0a4f8d2b57",
+    date: "2026-08",
     title: "CLE Data Initiatives",
     company: "Johns Hopkins University",
     role: "Strategy Fellow",
@@ -205,6 +209,9 @@ const workSamples = [
     order_index: 15,
   },
 ]
+
+// Pinned items first, then most recent first (date is the end year-month)
+workSamples.sort((a, b) => Number(!!b.pinned) - Number(!!a.pinned) || b.date.localeCompare(a.date))
 
 export default workSamples
 

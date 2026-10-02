@@ -2,7 +2,8 @@ const ROWS = [
   { icon: '📺', label: 'watching', value: 'Mom + Modern Family' },
   { icon: '📖', label: 'reading', value: 'Harry Potter & the Half-Blood Prince · Things That Matter' },
   { icon: '☕', label: 'drinking', value: 'ice lattes' },
-  { icon: '🛠️', label: 'building', value: 'Ours: a place for couples' },
+  { icon: '💼', label: 'working', value: 'Technical Project Manager at IAM Enterprise Company' },
+  { icon: '🛠️', label: 'building', value: 'Ribbon: App for Couples', href: 'https://theribbonapp.com' },
 ]
 
 export default function CurrentlyCard() {
@@ -22,12 +23,23 @@ export default function CurrentlyCard() {
       </div>
 
       <div className="flex flex-col gap-3">
-        {ROWS.map(({ icon, label, value }) => (
+        {ROWS.map(({ icon, label, value, href }) => (
           <div key={label} className="flex items-start gap-3 text-sm leading-relaxed">
             <span className="shrink-0">{icon}</span>
             <p>
               <span className="text-primary-600">{label}:</span>{' '}
-              <span className="text-ink-muted">{value}</span>
+              {href ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-600 underline hover:text-primary-700"
+                >
+                  {value}
+                </a>
+              ) : (
+                <span className="text-ink-muted">{value}</span>
+              )}
             </p>
           </div>
         ))}

@@ -12,12 +12,15 @@ const TYPEWRITER_LINES = [
   'I make it make sense',
 ]
 
-function useTypewriter(lines, { typingSpeed = 55, deletingSpeed = 30, pause = 1400 } = {}) {
+const ANIMATION_DURATION_MS = 10000
+
+function useTypewriter(lines, { typingSpeed = 55, deletingSpeed = 30, pause = 1400, stopped = false } = {}) {
   const [lineIndex, setLineIndex] = useState(0)
   const [text, setText] = useState('')
   const [phase, setPhase] = useState('typing')
 
   useEffect(() => {
+    if (stopped) return
     const currentLine = lines[lineIndex]
     let timeout
 
@@ -39,25 +42,26 @@ function useTypewriter(lines, { typingSpeed = 55, deletingSpeed = 30, pause = 14
     }
 
     return () => clearTimeout(timeout)
-  }, [text, phase, lineIndex, lines, typingSpeed, deletingSpeed, pause])
+  }, [text, phase, lineIndex, lines, typingSpeed, deletingSpeed, pause, stopped])
 
-  return text
+  // Once stopped, settle on the full line that was being typed
+  return stopped ? lines[lineIndex] : text
 }
 
 const BLOBS = [
-  { color: '#A78BFA', size: 260, top: '-4rem', left: '5%', delay: '0s' },
-  { color: '#67E8F9', size: 220, top: '10%', left: '60%', delay: '2s' },
-  { color: '#FCA5A5', size: 200, top: '55%', left: '-2%', delay: '4s' },
-  { color: '#5B9BD5', size: 240, top: '45%', left: '75%', delay: '6s' },
+  { color: '#A78BFA', size: 'min(46vw, 520px)', top: '-8%', left: '2%', delay: '0s' },
+  { color: '#67E8F9', size: 'min(40vw, 460px)', top: '8%', left: '62%', delay: '2s' },
+  { color: '#FCA5A5', size: 'min(36vw, 420px)', top: '58%', left: '-4%', delay: '4s' },
+  { color: '#5B9BD5', size: 'min(44vw, 500px)', top: '50%', left: '72%', delay: '6s' },
 ]
 
 const FEATURED_IDS = [
+  'f4b8c2a1-3d6e-4f89-9a12-7c5e0d8b4f21', // Ribbon
   '79e5f9fa-df72-4b98-b747-f567366fa0a3', // AWS
   'd6bf22d9-6a70-4824-b296-e3711205acf3', // ION Group
   '31dc1e29-3fa5-4177-a1aa-93d97280e9d5', // Biome
   '0b019b80-d3e1-4b25-b94b-2e319acf6f2f', // TacMed
-  'f4b8c2a1-3d6e-4f89-9a12-7c5e0d8b4f21', // Ours
-  '9d3e7a5c-1b4f-4c82-8e6a-2f9d5b7c3a10', // RAG Pitch Generator
+  'a3f2c1d4-8e7b-4a96-b5f0-2d9e8c7f6a15', // Eulerity Pitch Agent
   '2c6f9b4d-8a1e-4d75-b3c9-6e0a4f8d2b57', // CLE Data Initiatives
 ]
 const featuredStudies = FEATURED_IDS.map(id => workSamples.find(ws => ws.id === id))
@@ -83,20 +87,22 @@ export default function Home() {
   }
 
   const { pathname } = useLocation()
-  const typedText = useTypewriter(TYPEWRITER_LINES)
+  const [animationsStopped, setAnimationsStopped] = useState(false)
+  const typedText = useTypewriter(TYPEWRITER_LINES, { stopped: animationsStopped })
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimationsStopped(true), ANIMATION_DURATION_MS)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <div>
-      {/* Hero */}
-      <section
-        className="relative overflow-hidden py-16 border-b border-border"
-        style={{ fontFamily: 'var(--font-sans)' }}
-      >
-        {/* Floating blobs */}
+      {/* Full-page animated background; pauses after 10 seconds */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
         {BLOBS.map((blob, i) => (
           <span
             key={i}
-            className="absolute rounded-full animate-drift pointer-events-none"
+            className="absolute rounded-full animate-drift"
             style={{
               width: blob.size,
               height: blob.size,
@@ -105,11 +111,18 @@ export default function Home() {
               backgroundColor: blob.color,
               opacity: 0.18,
               animationDelay: blob.delay,
+              animationPlayState: animationsStopped ? 'paused' : 'running',
               filter: 'blur(2px)',
             }}
           />
         ))}
+      </div>
 
+      {/* Hero */}
+      <section
+        className="relative min-h-[calc(100vh-10rem)] flex flex-col justify-center py-16 border-b border-border"
+        style={{ fontFamily: 'var(--font-sans)' }}
+      >
         <div className="relative flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
           {/* Hero text */}
           <div className="flex-1 min-w-0">
@@ -118,7 +131,7 @@ export default function Home() {
             </p>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-ink mb-6 min-h-[1.4em]">
               {typedText}
-              <span className="animate-blink text-primary-500">|</span>
+              {!animationsStopped && <span className="animate-blink text-primary-500">|</span>}
             </h1>
             <p className="text-sm md:text-base text-primary-600 tracking-widest mb-8">
               systems · data · ai · builder
@@ -195,8 +208,8 @@ export default function Home() {
                 />
               </div>
               <p
-                className="mt-3 text-sm font-medium text-ink"
-                style={{ fontFamily: 'var(--font-sans)' }}
+                className="mt-3 text-base md:text-xl font-bold"
+                style={{ fontFamily: 'var(--font-sans)', color: '#0b1a33' }}
               >
                 {video.title}
               </p>
