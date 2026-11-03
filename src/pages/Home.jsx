@@ -63,8 +63,8 @@ export default function Home() {
 
   return (
     <div>
-      {/* Full-page Ghibli style background; clouds pause after 10 seconds */}
-      <GhibliBackground paused={animationsStopped} />
+      {/* Full-page soft painterly background */}
+      <GhibliBackground />
 
       {/* Hero */}
       <section

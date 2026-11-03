@@ -27,8 +27,8 @@
   --color-border: #8fb4d6;
 
   /* Font families */
-  --font-display: "Courier New", monospace;
-  --font-sans: "Courier New", monospace;
+  --font-display: "Merriweather", Georgia, serif;
+  --font-sans: "Merriweather", Georgia, serif;
 
   /* Typography scale */
   --text-display-2xl: 5rem;
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Courier New only ships regular and bold, so muted text is bold too for legibility.
+/* Muted text is bold too for legibility.
    Unlayered rules beat Tailwind's layered utilities by design. */
 .text-ink-muted {
   font-weight: 700;

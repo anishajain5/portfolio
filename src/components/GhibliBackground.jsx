@@ -1,60 +1,96 @@
-const CLOUDS = [
-  { top: '9%', left: '6%', width: 'min(34vw, 420px)', opacity: 0.95, duration: '26s', delay: '0s' },
-  { top: '20%', left: '58%', width: 'min(40vw, 520px)', opacity: 0.9, duration: '32s', delay: '-8s' },
-  { top: '38%', left: '28%', width: 'min(26vw, 320px)', opacity: 0.75, duration: '30s', delay: '-14s' },
-  { top: '4%', left: '78%', width: 'min(24vw, 300px)', opacity: 0.8, duration: '28s', delay: '-3s' },
-]
+import { useMemo } from 'react'
 
-function Cloud() {
-  return (
-    <svg viewBox="0 0 400 160" className="w-full h-auto" aria-hidden="true">
-      <g fill="#ffffff">
-        <ellipse cx="200" cy="120" rx="190" ry="34" />
-        <circle cx="105" cy="95" r="52" />
-        <circle cx="175" cy="68" r="62" />
-        <circle cx="255" cy="82" r="50" />
-        <circle cx="315" cy="105" r="38" />
-      </g>
-      <ellipse cx="200" cy="138" rx="170" ry="14" fill="#dcecf5" opacity="0.7" />
-    </svg>
-  )
+const FLOWER_COLORS = ['#f3b8c8', '#c9b6e4', '#f6e08a', '#ffffff', '#f4c39a', '#a9c8ee', '#bfe0a8']
+
+// Deterministic pseudo random numbers so the flowers do not move between renders
+function seededRandom(seed) {
+  let s = seed
+  return () => {
+    s = (s * 1664525 + 1013904223) % 4294967296
+    return s / 4294967296
+  }
 }
 
-// Soft Ghibli-style sky, drifting clouds and rolling hills. Clouds pause when `paused` is true.
-export default function GhibliBackground({ paused }) {
+function buildFlowers(count) {
+  const rand = seededRandom(7)
+  return Array.from({ length: count }, () => {
+    const x = rand() * 1440
+    const meadowTop = 660 + (x / 1440) * 110
+    const y = meadowTop + 12 + rand() * (890 - meadowTop - 12)
+    return {
+      x,
+      y,
+      r: 2 + rand() * 5 * ((y - 640) / 260),
+      color: FLOWER_COLORS[Math.floor(rand() * FLOWER_COLORS.length)],
+      opacity: 0.45 + rand() * 0.4,
+    }
+  })
+}
+
+// Soft impressionist landscape: misty pale mountains and a pastel flower meadow.
+export default function GhibliBackground() {
+  const flowers = useMemo(() => buildFlowers(170), [])
+
   return (
     <div
       className="fixed inset-0 -z-10 overflow-hidden pointer-events-none"
       aria-hidden="true"
-      style={{ background: 'linear-gradient(to bottom, #a9d8ef 0%, #cdeaf5 38%, #eef8f3 70%, #f6fbef 100%)' }}
+      style={{ background: 'linear-gradient(to bottom, #fbf8f0 0%, #eef4f8 45%, #f3f7ee 100%)' }}
     >
-      {CLOUDS.map((cloud, i) => (
-        <div
-          key={i}
-          className="absolute animate-cloud"
-          style={{
-            top: cloud.top,
-            left: cloud.left,
-            width: cloud.width,
-            opacity: cloud.opacity,
-            animationDuration: cloud.duration,
-            animationDelay: cloud.delay,
-            animationPlayState: paused ? 'paused' : 'running',
-          }}
-        >
-          <Cloud />
-        </div>
-      ))}
-
       <svg
-        className="absolute bottom-0 left-0 w-full"
-        style={{ height: '34vh' }}
-        viewBox="0 0 1440 400"
-        preserveAspectRatio="none"
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 1440 900"
+        preserveAspectRatio="xMidYMax slice"
       >
-        <path d="M0 210 C 220 120, 420 150, 640 210 C 860 270, 1100 130, 1440 190 L1440 400 L0 400 Z" fill="#c9e6b4" opacity="0.7" />
-        <path d="M0 270 C 260 190, 520 250, 760 290 C 1000 330, 1200 220, 1440 270 L1440 400 L0 400 Z" fill="#aad49a" opacity="0.75" />
-        <path d="M0 340 C 300 290, 600 360, 900 335 C 1150 312, 1300 340, 1440 325 L1440 400 L0 400 Z" fill="#8fc283" opacity="0.8" />
+        <defs>
+          <filter id="brush" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="4" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="16" result="displaced" />
+            <feGaussianBlur in="displaced" stdDeviation="2.2" />
+          </filter>
+          <filter id="grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="9" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0.5 0" />
+          </filter>
+          <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#fbf8f0" stopOpacity="0.85" />
+            <stop offset="1" stopColor="#fbf8f0" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="meadow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#eef0c6" />
+            <stop offset="1" stopColor="#e3ecbd" />
+          </linearGradient>
+        </defs>
+
+        <g filter="url(#brush)">
+          {/* Far mountains */}
+          <path d="M0 400 L130 330 L260 380 L420 270 L560 330 L690 200 L820 290 L980 250 L1150 330 L1300 290 L1440 340 L1440 640 L0 640 Z" fill="#dbe8f3" />
+          {/* Mid mountains */}
+          <path d="M0 470 L180 380 L330 450 L520 350 L700 430 L900 330 L1080 420 L1250 360 L1440 430 L1440 680 L0 680 Z" fill="#c9dded" />
+          <path d="M640 430 L900 330 L1080 420 L1000 520 L800 560 Z" fill="#d8e9d4" opacity="0.55" />
+          {/* Near slopes with warm sunlit edges */}
+          <path d="M0 560 L220 480 L440 560 L640 520 L880 600 L1120 480 L1300 540 L1440 470 L1440 740 L0 740 Z" fill="#b9d3e7" />
+          <path d="M880 600 L1120 480 L1300 540 L1440 470 L1440 560 L1300 610 L1120 570 Z" fill="#dfe9bd" opacity="0.7" />
+        </g>
+
+        {/* Mist between mountains and meadow */}
+        <rect x="0" y="480" width="1440" height="220" fill="url(#mist)" />
+
+        {/* Meadow */}
+        <g filter="url(#brush)">
+          <path d="M0 660 C 320 620, 640 700, 980 745 C 1180 772, 1330 770, 1440 770 L1440 900 L0 900 Z" fill="url(#meadow)" />
+          <path d="M0 720 C 300 690, 700 770, 1000 800 C 1200 820, 1340 815, 1440 815 L1440 900 L0 900 Z" fill="#dce8b0" opacity="0.75" />
+        </g>
+
+        {/* Pastel wildflowers */}
+        <g>
+          {flowers.map((f, i) => (
+            <circle key={i} cx={f.x} cy={f.y} r={f.r} fill={f.color} opacity={f.opacity} />
+          ))}
+        </g>
+
+        {/* Painted canvas grain */}
+        <rect x="0" y="0" width="1440" height="900" filter="url(#grain)" opacity="0.18" />
       </svg>
     </div>
   )
