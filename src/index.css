@@ -27,8 +27,8 @@
   --color-border: #8fb4d6;
 
   /* Font families */
-  --font-display: "Merriweather", Georgia, serif;
-  --font-sans: "Merriweather", Georgia, serif;
+  --font-display: "Noto Sans", system-ui, sans-serif;
+  --font-sans: "Noto Sans", system-ui, sans-serif;
 
   /* Typography scale */
   --text-display-2xl: 5rem;

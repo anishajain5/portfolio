@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import PersonaCards from '../components/PersonaCards'
 import CurrentlyCard from '../components/CurrentlyCard'
-import GhibliBackground from '../components/GhibliBackground'
+import PaintingBackground from '../components/PaintingBackground'
 import { CardBullets } from '../components/WorkSampleCard'
 import workSamples from '../data/workSamples'
 
@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div>
       {/* Full-page soft painterly background */}
-      <GhibliBackground />
+      <PaintingBackground />
 
       {/* Hero */}
       <section
